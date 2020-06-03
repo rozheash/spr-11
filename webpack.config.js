@@ -7,7 +7,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-    entry: { main: './script.js' },
+    entry: { main: './src/js/script.js' },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js'
@@ -42,7 +42,7 @@ module.exports = {
             {
                 test: /\.(eot|ttf|woff|woff2)$/,
                 use: [
-                    'file-loader?name=../vendor/fonts/[name].[ext]'
+                    'file-loader?name=../src/vendor/fonts/[name].[ext]'
                 ]
             },
             {
@@ -67,11 +67,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: false,
-            template: './index.html',
+            template: './src/index.html',
             filename: 'index.html'
         }),
         new webpack.DefinePlugin({
             'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
+        }),
+        new WebpackMd5Hash()
     ]
 };

@@ -1,12 +1,13 @@
 export class Api {
 
-    constructor(groupId, token) {
+    constructor(serverUrl, groupId, token) {
+        this.serverUrl = serverUrl;
         this.groupId = groupId;
         this.token = token;
     }
 
     getUserInfo() {
-        return fetch(`https://praktikum.tk/${this.groupId}/users/me`, {
+        return fetch(`${this.serverUrl}/${this.groupId}/users/me`, {
             headers: {
                 authorization: this.token
             }
@@ -21,7 +22,7 @@ export class Api {
     }
 
     getCards() {
-        return fetch(`https://praktikum.tk/${this.groupId}/cards`, {
+        return fetch(`${this.serverUrl}/${this.groupId}/cards`, {
             headers: {
                 authorization: this.token
             }
@@ -36,7 +37,7 @@ export class Api {
     }
 
     patchUserInfo(name, about) {
-        return fetch(`https://praktikum.tk/${this.groupId}/users/me`, {
+        return fetch(`${this.serverUrl}/${this.groupId}/users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: this.token,

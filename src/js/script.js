@@ -1,4 +1,4 @@
-import "./pages/index.css";
+import "../pages/index.css";
 import {Api} from './api.js';
 import {Card} from './card.js';
 import {CardList} from './cardList.js';
@@ -45,7 +45,9 @@ import {UserInfo} from './userInfo.js';
   const addFormVal = new FormValidator(addForm);
   addFormVal.setEventListeners();
 
-  const api = new Api('cohort10', 'd6d07657-35d8-4107-87df-9ee3ec71ce74');
+  const serverUrl = NODE_ENV === 'development' ? 'http://praktikum.tk' : 'https://praktikum.tk';
+
+  const api = new Api(serverUrl, 'cohort10', 'd6d07657-35d8-4107-87df-9ee3ec71ce74');
 
   api.getUserInfo()
     .then((data) => {
