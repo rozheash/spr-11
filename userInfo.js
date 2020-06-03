@@ -1,4 +1,4 @@
-class UserInfo {
+export class UserInfo {
     constructor(name, about, userName, userJob, editForm) {
       this.name = name;
       this.about = about;

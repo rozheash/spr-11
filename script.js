@@ -1,4 +1,10 @@
 import "./pages/index.css";
+import {Api} from './api.js';
+import {Card} from './card.js';
+import {CardList} from './cardList.js';
+import {FormValidator} from './formValidator.js';
+import {Popup} from './popup.js';
+import {UserInfo} from './userInfo.js';
 
 (function() {
   const addButton = document.querySelector('.user-info__button');
