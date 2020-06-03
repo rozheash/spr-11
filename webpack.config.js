@@ -20,19 +20,25 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-            },
-            {
-                test: /\.(png|jpg|gif|ico|svg)$/,
+                test: /\.(png|jpg|gif|ico|svg)$/i,
                 use: [
-                    'file-loader?name=../images/[name].[ext]',
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {}
-                    },
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      publicPath: 'img',
+                      outputPath: 'img',
+                      useRelativePath: true,
+                      esModule: false,
+                    }
+                  },
+                  {
+                    loader: 'image-webpack-loader',
+                    options: {}
+                  }
                 ]
             },
+            
             {
                 test: /\.(eot|ttf|woff|woff2)$/,
                 use: [
